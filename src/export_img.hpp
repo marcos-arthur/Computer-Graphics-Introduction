@@ -58,9 +58,9 @@ namespace pet {
             img.reserve(img_width * img_height * 4);
 
             for (auto &color : buffer) {
-                double r = std::clamp(color./*TODO*/, 0.0, 1.0);
-                double g = std::clamp(color./*TODO*/, 0.0, 1.0);
-                double b = std::clamp(color./*TODO*/, 0.0, 1.0);
+                double r = std::clamp(color.red, 0.0, 1.0);
+                double g = std::clamp(color.green, 0.0, 1.0);
+                double b = std::clamp(color.blue, 0.0, 1.0);
                 
                 if(gamma_correction){
                 r = apply_gamma(r);
@@ -100,7 +100,7 @@ namespace pet {
                               const std::vector<RGBColor>& buffer,
                               const int& img_width,
                               const int& img_height,
-                              const bool& gamma_correction){
+                              const bool& gamma_correction = false){
 
             std::ofstream ofs(filename);
 
@@ -110,9 +110,9 @@ namespace pet {
             }
             ofs << "P3\n" << img_width << ' ' << img_height << "\n255\n";
 
-            /*
-            TODO
-            */
+            for(auto &color: buffer){
+                ofs << static_cast<int>(color.red * 255.0) << ' ' << static_cast<int>(color.green * 255.0) << ' ' << static_cast<int>(color.blue * 255.0) << '\n' ;
+            }
 
             ofs.close();
             return true; // STUB

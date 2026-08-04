@@ -17,7 +17,7 @@ namespace pet
       public:
         ~Background() = default; //< Destrutor Padrão
         Background() = default;  //< Construtor Padrão
-        Background(RGBColor);    //< Construtor Parametrizado
+        Background(RGBColor c) : color(c){};    //< Construtor Parametrizado
         //static constexpr byte max_channel_value{255}; //< Valor máximo de cada entrada RGB
         
          /**

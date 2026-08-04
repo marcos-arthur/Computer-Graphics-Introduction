@@ -17,7 +17,6 @@
 #include <string>
 #include <vector>
 
-
 namespace pet {
     enum class ImgType { //> Tipo da imagem exportada
             PPM3=0,
@@ -32,7 +31,12 @@ namespace pet {
     class Canvas {
         private:
 
-        /* atributos */
+        std::string filename;
+        std::vector<RGBColor> buffer;
+        int img_width;
+        int img_height;
+        ImgType type;
+        bool gamma_correction;
 
         public:
         
@@ -44,28 +48,34 @@ namespace pet {
               *
               */
 
-            /* TODO
-            constructors
-            destructors
-            getters
-            */
+            Canvas(const int &w, const int &h, const std::string &fn, ImgType imgType = ImgType::PPM3, bool gc = false) 
+            : filename(fn), img_width(w), img_height(h), type(imgType), gamma_correction(gc)
+            {
+                buffer.resize(w*h);
+            };
+
+            int get_width() const { return img_width; }
+            int get_height() const { return img_height; }
+
+            const std::vector<RGBColor>& data() const { return buffer; }
 
             /**
               * @brief Função que desenha um pixel na imagem
               * @param pixel Posição do pixel desenhado.
               * @param color Nova cor do pixel.
               */
-        void add(const Pixel& pixel, const RGBColor& color){
-            /*TODO*/
-            /*Dica: Pixel é apenas um vetor de 2 posições (x,y)*/
-	    };
-        
+            void add(const Pixel& pixel, const RGBColor& color){
+                if(pixel.x() < 0 || pixel.x() >= img_width || pixel.y() < 0 || pixel.y() >= img_height) return;
+
+                buffer[pixel.y() * img_width + pixel.x()] = color;
+            };
+            
             /**
-              * @brief Função que exporta a imagem armazenada
-              */
-        bool export_img() const {
-            /*TODO*/   
-        };
+             * @brief Função que exporta a imagem armazenada
+             */
+            bool export_img() const {
+                return ExportImg::exportPPM3(filename, buffer, img_width, img_height, false);
+            };
 	};
 };
 

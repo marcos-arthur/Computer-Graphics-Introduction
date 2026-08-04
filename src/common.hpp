@@ -45,27 +45,62 @@ struct RunningOptions {
 
 struct RGBColor {
 
-  /*
-  atributos...
-  constructors...
-  destructors...
-  */
+  double red;
+  double green;
+  double blue;
 
+  RGBColor(){
+    red = green = blue = .0;
+  }
 
-  RGBColor operator+(const double& c) const {return RGBColor(/*TODO*/);}
-  RGBColor operator*(const double& t) const {return RGBColor(/*TODO*/);}
-  RGBColor operator/(const double& t) const {return RGBColor(/*TODO*/);}
+  RGBColor(double _red, double _green, double _blue, std::string type = "RGB"){
+    if(type == "RGB"){
+      this->red = std::clamp(_red/255.0, 0., 1.);
+      this->green = std::clamp(_green/255.0, 0., 1.);
+      this->blue = std::clamp(_blue/255.0, 0., 1.);
+    }else if(type == "spectre"){
+      this->red = std::clamp(_red, 0., 1.); 
+      this->green = std::clamp(_green, 0., 1.);
+      this->blue = std::clamp(_blue, 0., 1.);
+    }
+  }
 
-  RGBColor operator+(const RGBColor& c) const {return RGBColor(/*TODO*/);}
-  RGBColor operator*(const RGBColor& c) const {return RGBColor(/*TODO*/);}
-  RGBColor operator/(const RGBColor& c) const {return RGBColor(/*TODO*/);}
+  ~RGBColor() = default;
 
-  bool operator==(const RGBColor& c) const {return /*TODO*/};
+  RGBColor operator+(const double& c) const {
+    return RGBColor( this->red + c, this->green + c, this->blue + c);
+  }
+  RGBColor operator-(const double& c) const {
+    return RGBColor( this->red - c, this->green - c, this->blue - c);
+  }
+  RGBColor operator*(const double& t) const {
+    return RGBColor( this->red * t, this->green * t, this->blue * t);
+  }
+  RGBColor operator/(const double& t) const {
+    return RGBColor( this->red * t, this->green * t, this->blue * t);
+  }
+
+  RGBColor operator+(const RGBColor& c) const {
+    return RGBColor( this->red + c.red, this->green + c.green, this->blue + c.blue);
+  }
+  RGBColor operator-(const RGBColor& c) const {
+    return RGBColor( this->red - c.red, this->green - c.green, this->blue - c.blue);
+  }
+  RGBColor operator*(const RGBColor& c) const {
+    return RGBColor( this->red * c.red, this->green * c.green, this->blue * c.blue);
+  }
+  RGBColor operator/(const RGBColor& c) const {
+    return RGBColor( this->red / c.red, this->green / c.green, this->blue / c.blue);
+  }
+
+  bool operator==(const RGBColor& c) const {
+    return this->red != c.red || this->green != c.green || this->blue != c.blue;
+  };
 
   double&    operator[](const size_t index){
-    if(index == 0)return /*TODO*/;
-    if(index == 1)return /*TODO*/;
-    return /*TODO*/;
+    if(index == 0) return this->red;
+    if(index == 1) return this->green;
+    return this->blue;
   };
 
 };

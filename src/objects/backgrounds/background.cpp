@@ -3,5 +3,5 @@
 
 namespace pet
 {
-    RGBColor Background::sample(double u, double v) const{/*TODO*/}
+    RGBColor Background::sample(double u, double v) const{ return color; }
 }
