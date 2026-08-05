@@ -7,7 +7,7 @@
 #include "polyline.hpp"
 
 namespace pet {
-class Polygon : public ? {
+class Polygon : public Polyline {
 public:
   /**
    * @brief Construtor parametrizado

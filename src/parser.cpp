@@ -118,23 +118,23 @@ void circle(XMLElement *elem) {
   sc.push_back(std::move(scop));
 }
 
-void polygon(XMLElement *elem) {
-  auto points = getPoints(elem, "points");
-  if (points.size() < 3) { // poligono precisa de area
-    std::cerr << "  [WARN] <polygon> exige >= 3 pontos.\n";
-    return;
-  }
+// void polygon(XMLElement *elem) {
+//   auto points = getPoints(elem, "points");
+//   if (points.size() < 3) { // poligono precisa de area
+//     std::cerr << "  [WARN] <polygon> exige >= 3 pontos.\n";
+//     return;
+//   }
 
-  SceneOp scop;
-  scop.shape = std::make_unique<Polygon>(points);
-  scop.fill = getFill(elem);
-  sc.push_back(std::move(scop));
-}
+//   SceneOp scop;
+//   scop.shape = std::make_unique<Polygon>(points);
+//   scop.fill = getFill(elem);
+//   sc.push_back(std::move(scop));
+// }
 
 std::unordered_map<std::string, std::function<void(XMLElement *)>> tags{
     {"line", line},
     {"circle", circle},
-    {"polygon", polygon},
+    // {"polygon", polygon},
     {"canvas", canvas},
 
 };

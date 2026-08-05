@@ -30,6 +30,14 @@ int main(int argc, char **argv) {
     }
   }
 
+  Line line({0, 0}, {800, 400});
+  Line line2({0, 400}, {800, 0});
+  // line.drawObject(canvas, {0,0,0});
+  // line2.drawObject(canvas, {0,0,0});
+
+  Circle circle(100, {400, 200});
+  circle.drawObject(canvas, {0,0,0});
+
   canvas.export_img();
 
   return 0;
