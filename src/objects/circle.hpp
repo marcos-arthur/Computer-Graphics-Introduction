@@ -40,7 +40,8 @@ namespace pet {
               */
             void fillObject(Canvas& canvas, const RGBColor& color) override;
 		private:
-			// TODO: missing 2 functions
+			void drawBresenhan(int radius, Canvas &canvas, RGBColor color);
+			void drawXiaolinWu(int radius, Canvas &canvas, RGBColor color);
     };
 };
 

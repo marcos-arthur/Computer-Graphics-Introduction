@@ -13,6 +13,7 @@
 #ifndef LINE_HPP
 #define LINE_HPP
 
+#include "canvas.hpp"
 #include "common.hpp"
 #include "object.hpp"
 #include <utility>
@@ -49,6 +50,9 @@ namespace pet{
             void drawObject(Canvas& canvas, RGBColor color, DrawMethod method = DrawMethod::Bresenhan) override ;
 
 		private:
+			void drawBresenhan(Point2 p1, Point2 p2, Canvas &canvas, RGBColor color);
+			void drawMidpoint(Point2 p1, Point2 p2, Canvas &canvas, RGBColor color);
+			void drawXiaolinWu(Point2 p1, Point2 p2, Canvas &canvas, RGBColor color);
 			// TODO: missing 3 functions
     };
 
