@@ -6,6 +6,7 @@ namespace pet {
     Transform::Transform() : mat() {}                   //< Construtor padrão (obs: a matriz já vem como identidade)
     Transform::Transform(const Mat3& mat) : mat(mat) {} //< Construtor parametrizado
     
+    // POR FAVOR COLOQUE A POSIÇÃO REAL
     void Transform::rotate(double degrees, Point2 axis)
     {
 
@@ -15,17 +16,20 @@ namespace pet {
                             std::cos(radians), -std::sin(radians), 0.,
                             std::sin(radians), std::cos(radians), 0.,
                                 0.              , 0.                   , 1
-    
                            )
         ; //< Matriz de rotação 
 
-        Mat3 toOrigin = Mat3(); //< Matriz de translação do 'ponto' para o 'axis'   
+        Mat3 toOrigin = Mat3(
+          1., 0., axis.x(),
+          0., 1., axis.y(),
+          0., 0.,        1.
+        ); //< Matriz de translação do 'ponto' para o 'axis'
 
-        /*TODO: Definir a matriz toOrigin*/
-
-        Mat3 fromOrigin = Mat3();//< Matriz de translação do 'axis' de volta para o 'ponto'
-
-        /*TODO: Definir a matriz fromOrigin*/
+        Mat3 fromOrigin = Mat3(
+          1., 0., -axis.x(),
+          0., 1., -axis.y(),
+          0., 0.,        1.
+        );//< Matriz de translação do 'axis' de volta para o 'ponto'
         
         Mat3 pivot = fromOrigin * rotMat * toOrigin;  //< Composição entre as 3 transformações
         this->mat = mat * pivot;
@@ -47,10 +51,12 @@ namespace pet {
     void Transform::translate(Point2 delta)
     {
 
-        Mat3 transMat = Mat3(); //< Matriz de translação até delta.
+        Mat3 transMat = Mat3(
+          1., 0., delta.x(),
+          0., 1., delta.y(),
+          0., 0.,        1.
+        );
         
-        /*TODO: Definir a matriz transMat*/
-
         this->mat = mat * transMat;
     }
 
@@ -62,11 +68,19 @@ namespace pet {
 
         /*TODO: Definir a matriz scaleMat*/
 
-        Mat3 toOrigin = Mat3(); //< Matriz de translação do 'ponto' para o 'axis'   
+        Mat3 toOrigin = Mat3(
+          1., 0., axis.x(),
+          0., 1., axis.y(),
+          0., 0.,        1.
+        ); //< Matriz de translação do 'ponto' para o 'axis'   
 
         /*TODO: Definir a matriz toOrigin*/
 
-        Mat3 fromOrigin = Mat3();//< Matriz de translação do 'axis' de volta para o 'ponto'
+        Mat3 fromOrigin = Mat3(
+          1., 0., -axis.x(),
+          0., 1., -axis.y(),
+          0., 0.,        1.
+        );//< Matriz de translação do 'axis' de volta para o 'ponto'
 
         /*TODO: Definir a matriz fromOrigin*/        
 
