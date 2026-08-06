@@ -16,7 +16,7 @@
 namespace pet{
 			enum class DrawMethod {
 				Bresenhan = 0,
-        		BresenhanMidpoint,
+        BresenhanMidpoint,
 				XiaolinWu,
 			};
     class Object {

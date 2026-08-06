@@ -49,11 +49,12 @@ namespace pet{
               */
             void drawObject(Canvas& canvas, RGBColor color, DrawMethod method = DrawMethod::Bresenhan) override ;
 
-		private:
-			void drawBresenhan(Point2 p1, Point2 p2, Canvas &canvas, RGBColor color);
-			void drawMidpoint(Point2 p1, Point2 p2, Canvas &canvas, RGBColor color);
-			void drawXiaolinWu(Point2 p1, Point2 p2, Canvas &canvas, RGBColor color);
-			// TODO: missing 3 functions
+          private:
+            void drawBresenhan(Point2 p1, Point2 p2, Canvas &canva, RGBColor color);
+
+            void drawMidpoint(Point2 p1, Point2 p2, Canvas &canva, RGBColor color);
+            
+            void drawXiaolinWu(Point2 p1, Point2 p2, Canvas &canva, RGBColor color);
     };
 
 }; //> namespace pet

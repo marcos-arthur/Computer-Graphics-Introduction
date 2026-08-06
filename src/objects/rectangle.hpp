@@ -27,7 +27,7 @@ public:
 			  top_left, 
 			  Point2(bottom_right.x(), top_left.y()), 
 			  bottom_right,
-            Point2(top_left.x(), bottom_right.y())}) {};
+            Point2(top_left.x(), bottom_right.y())}, scale, thick) {};
 };
 }; // namespace pet
 
