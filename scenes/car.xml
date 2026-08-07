@@ -1,0 +1,7 @@
+<PEinT>
+    <canvas filename="car.png" size="800 400" />
+
+    <rectangle top_left="0 0" bottom_right="40 80" fill="255 0 0"/>
+    <translate by="380 160" />
+
+</PEinT>

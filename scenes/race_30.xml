@@ -1,0 +1,12 @@
+<PEinT>
+    <canvas filename="race.png" size="800 400" />
+
+    <rectangle top_left="0 0" bottom_right="800 400" fill="10 110 50"/>
+
+    <ellipse radii="460 350" center="400 0" fill="60 60 60"/>
+    <ellipse radii="290 170" center="400 0" fill="170 30 30"/>
+    <ellipse radii="260 140" center="400 0" fill="10 110 50"/>
+
+    <circle radius="80" center="0 170" fill="255 255 0"/>
+    
+</PEinT>
