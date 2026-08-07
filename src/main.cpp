@@ -4,6 +4,9 @@
 #include "floodFill.hpp"
 #include "iterm.hpp"
 #include "parser.hpp"
+#include "filters/filter.hpp"
+#include "filters/medianFilter.hpp"
+
 
 #include <string>
 
@@ -41,7 +44,7 @@ void demo() {
     for (int i = 0; i < 800; ++i)
       canvas.add(Pixel(i, j), bkg.sample(double(i) / 800.0, double(j) / 400.0));
 
-  Line line(Point2(0, 0), Point2(800, 400));
+  Line line(Point2(0, 0), Point2(800, 400), Point2(1,1), 5.0);
   // Line line2(Point2(400, 400), Point2(600, 0));
   // Circle circle(80, Point2(400, 200));
   // Circle circle2(90, Point2(400, 200));
@@ -53,6 +56,9 @@ void demo() {
   // circle.drawObject(canvas, RGBColor(188, 0, 45, "rgb"));
   // circle2.drawObject(canvas, RGBColor(0, 0, 0, "rgb"),
   // DrawMethod::XiaolinWu);
+
+  MedianFilter mf(3);
+  // mf.applyFilter(canvas);
 
   canvas.export_img();
 
